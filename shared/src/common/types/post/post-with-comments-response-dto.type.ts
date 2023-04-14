@@ -1,11 +1,6 @@
-import { CommentResponseDto } from '../types';
+import { CommentResponseDto, PostResponseDto } from '../types';
 
-type PostWithCommentsResponseDto = {
-  id: number;
-  createdAt: string;
-  updatedAt: string;
-  title: string;
-  content: string;
+type PostWithCommentsResponseDto = PostResponseDto & {
   comments: CommentResponseDto[];
 };
 
