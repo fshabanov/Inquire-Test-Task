@@ -6,6 +6,7 @@ import { TypeOrmModule } from 'src/modules/modules';
 import { AppService } from 'src/services/app/app.service';
 
 import { PostModule } from '../post/post.module';
+import { CommentEntity } from 'src/entities/comment/comment.entity';
 
 const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
 
@@ -19,7 +20,7 @@ const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
       password: PASSWORD,
       database: NAME,
       logging: true,
-      entities: [PostEntity],
+      entities: [PostEntity, CommentEntity],
       migrations: ['dist/data/migrations/*.js'],
       migrationsTableName: 'migrations',
     }),
