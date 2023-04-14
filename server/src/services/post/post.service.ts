@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PostCreateRequestDto } from 'src/common/dtos/dtos';
+import { PostErrorMessage } from 'src/common/enums/enums';
 import { PostEntity } from 'src/entities/entities';
 import { Repository } from 'typeorm';
 
@@ -19,6 +20,18 @@ class PostService {
 
   public getAll(): Promise<PostEntity[]> {
     return this.postRepository.find();
+  }
+
+  public async getById(id: number): Promise<PostEntity> {
+    const post = await this.postRepository.findOne({
+      where: { id },
+    });
+
+    if (!post) {
+      throw new NotFoundException(PostErrorMessage.POST_NOT_FOUND);
+    }
+
+    return post;
   }
 }
 
