@@ -16,6 +16,10 @@ class PostService {
 
     return this.postRepository.save(post);
   }
+
+  public getAll(): Promise<PostEntity[]> {
+    return this.postRepository.find();
+  }
 }
 
 export { PostService };

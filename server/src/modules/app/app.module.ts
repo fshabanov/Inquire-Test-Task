@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ENV } from 'src/common/enums/enums';
-
-import { AppController } from '../../controllers/app/app.controller';
-import { AppService } from '../../services/app/app.service';
+import { AppController } from 'src/controllers/app/app.controller';
 import { PostEntity } from 'src/entities/entities';
+import { AppService } from 'src/services/app/app.service';
+
 import { PostModule } from '../post/post.module';
 
 const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiPath } from 'src/common/enums/enums';
 import { sanitizeHtml } from 'src/helpers/helpers';
 import { PostCreateRequestDto } from 'src/common/dtos/dtos';
@@ -17,6 +17,11 @@ class PostController {
       title,
       content: sanitizeHtml(content),
     });
+  }
+
+  @Get()
+  getAll(): Promise<PostEntity[]> {
+    return this.postService.getAll();
   }
 }
 
