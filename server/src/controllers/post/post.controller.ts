@@ -1,7 +1,17 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from 'src/common/decorators/decorators';
 import { ApiPath } from 'src/common/enums/enums';
 import { sanitizeHtml } from 'src/helpers/helpers';
-import { PostCreateRequestDto } from 'src/common/dtos/dtos';
+import {
+  PostCreateRequestDto,
+  PostUpdateRequestDto,
+} from 'src/common/dtos/dtos';
 import { PostEntity } from 'src/entities/entities';
 import { PostService } from 'src/services/post/post.service';
 
@@ -27,6 +37,14 @@ class PostController {
   @Get('/:id')
   getById(@Param('id') id: string): Promise<PostEntity> {
     return this.postService.getById(Number(id));
+  }
+
+  @Patch('/:id')
+  updatePost(
+    @Param('id') id: string,
+    @Body() { title, content }: PostUpdateRequestDto,
+  ): Promise<PostEntity> {
+    return this.postService.update(Number(id), { title, content });
   }
 }
 

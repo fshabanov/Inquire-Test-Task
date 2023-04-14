@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsString } from 'src/common/decorators/decorators';
 
 class PostCreateRequestDto {
   @IsString()

@@ -1,1 +1,1 @@
-export { PostCreateRequestDto } from './post/post';
+export { PostCreateRequestDto, PostUpdateRequestDto } from './post/post';

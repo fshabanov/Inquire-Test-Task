@@ -10,6 +10,7 @@ export {
   Post,
 } from '@nestjs/common';
 export { InjectRepository } from '@nestjs/typeorm';
+export { IsOptional, IsString } from 'class-validator';
 export {
   Column,
   CreateDateColumn,

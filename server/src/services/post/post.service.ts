@@ -1,5 +1,8 @@
 import { Injectable, InjectRepository } from 'src/common/decorators/decorators';
-import { PostCreateRequestDto } from 'src/common/dtos/dtos';
+import {
+  PostCreateRequestDto,
+  PostUpdateRequestDto,
+} from 'src/common/dtos/dtos';
 import { PostErrorMessage } from 'src/common/enums/enums';
 import { Repository } from 'src/common/types/types';
 import { PostEntity } from 'src/entities/entities';
@@ -32,6 +35,13 @@ class PostService {
     }
 
     return post;
+  }
+
+  public update(id: number, body: PostUpdateRequestDto): Promise<PostEntity> {
+    return this.postRepository.save({
+      id,
+      ...body,
+    });
   }
 }
 
