@@ -1,4 +1,7 @@
-export { type CommentResponseDto } from './comment/comment';
+export {
+  type CommentCreateRequestDto,
+  type CommentResponseDto,
+} from './comment/comment';
 export { type HttpOptions } from './http/http';
 export {
   type PostCreateRequestDto,
