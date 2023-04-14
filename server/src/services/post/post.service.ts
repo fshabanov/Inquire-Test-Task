@@ -1,9 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, InjectRepository } from 'src/common/decorators/decorators';
 import { PostCreateRequestDto } from 'src/common/dtos/dtos';
 import { PostErrorMessage } from 'src/common/enums/enums';
+import { Repository } from 'src/common/types/types';
 import { PostEntity } from 'src/entities/entities';
-import { Repository } from 'typeorm';
+import { NotFoundException } from 'src/exceptions/exceptions';
 
 @Injectable()
 class PostService {

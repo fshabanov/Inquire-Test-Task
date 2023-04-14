@@ -1,5 +1,6 @@
 import { DbTableName } from 'src/common/enums/enums';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity } from 'src/common/decorators/decorators';
+
 import { BaseEntity } from '../entities';
 
 @Entity({ name: DbTableName.POSTS })

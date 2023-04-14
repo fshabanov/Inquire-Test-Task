@@ -2,7 +2,7 @@ import {
   CreateDateColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
+} from 'src/common/decorators/decorators';
 
 abstract class BaseEntity {
   @PrimaryGeneratedColumn('increment')
