@@ -1,0 +1,39 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:editorconfig": "editorconfig-checker",
+    "lint:fs": "ls-lint",
+    "lint:shared:js": "cd shared && npm run lint:js",
+    "lint:shared:type": "cd shared && npm run lint:type",
+    "lint:shared": "cd shared && npm run lint",
+    "lint:client:js": "cd client && npm run lint:js",
+    "lint:client:type": "cd client && npm run lint:type",
+    "lint:client": "cd client && npm run lint",
+    "lint:server:js": "cd server && npm run lint:js",
+    "lint:server:type": "cd server && npm run lint:type",
+    "lint:server": "cd server && npm run lint",
+    "lint:js": "npm run lint:shared:js && npm run lint:server:js && npm run lint:client:js",
+    "lint:type": "npm run lint:shared:type && npm run lint:server:type && npm run lint:client:type",
+    "lint": "npm run lint:editorconfig && npm run lint:fs && npm run lint:shared && npm run lint:server && npm run lint:client"
+  },
+  "author": "Farid Shabanov",
+  "license": "ISC",
+  "devDependencies": {
+    "@ls-lint/ls-lint": "1.11.2",
+    "@typescript-eslint/eslint-plugin": "5.58.0",
+    "editorconfig-checker": "5.0.1",
+    "eslint": "8.38.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "lint-staged": "13.2.1",
+    "prettier": "2.8.7",
+    "simple-git-hooks": "2.8.1",
+    "typescript": "4.8.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  }
+}
