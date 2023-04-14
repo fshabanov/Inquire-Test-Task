@@ -8,6 +8,7 @@ import { PostService } from 'src/services/post/post.service';
   controllers: [PostController],
   providers: [PostService],
   imports: [TypeOrmModule.forFeature([PostEntity])],
+  exports: [PostService],
 })
 class PostModule {}
 

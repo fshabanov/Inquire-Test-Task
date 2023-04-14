@@ -7,6 +7,7 @@ import { AppService } from 'src/services/app/app.service';
 
 import { PostModule } from '../post/post.module';
 import { CommentEntity } from 'src/entities/comment/comment.entity';
+import { CommentModule } from '../comment/comment.module';
 
 const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
 
@@ -25,6 +26,7 @@ const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
       migrationsTableName: 'migrations',
     }),
     PostModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
