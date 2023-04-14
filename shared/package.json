@@ -1,0 +1,24 @@
+{
+  "name": "blog-app-shared",
+  "version": "1.0.0",
+  "description": "Shared files for Blog application",
+  "main": "index.js",
+  "scripts": {
+    "build:ts": "tsc && tsc-alias -p tsconfig.json",
+    "build": "npm run build:ts && cp package.json package-lock.json build",
+    "lint:js": "npx eslint \"src/**/*.ts\"",
+    "lint:type": "npx tsc --noEmit",
+    "lint": "npm run lint:js && npm run lint:type"
+  },
+  "author": "Farid Shabanov",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/sanitize-html": "2.9.0",
+    "tsc-alias": "1.8.5",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.0.4"
+  },
+  "dependencies": {
+    "sanitize-html": "2.10.0"
+  }
+}

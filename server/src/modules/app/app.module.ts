@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ENV } from 'src/common/enums/enums';
 
-import { AppController } from '../controllers/app.controller';
-import { AppService } from '../services/app.service';
+import { AppController } from '../../controllers/app/app.controller';
+import { AppService } from '../../services/app/app.service';
 import { PostEntity } from 'src/entities/entities';
+import { PostModule } from '../post/post.module';
 
 const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
 
@@ -22,6 +23,7 @@ const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
       migrations: ['dist/data/migrations/*.js'],
       migrationsTableName: 'migrations',
     }),
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
