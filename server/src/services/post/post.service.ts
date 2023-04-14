@@ -28,6 +28,7 @@ class PostService {
   public async getById(id: number): Promise<PostEntity> {
     const post = await this.postRepository.findOne({
       where: { id },
+      relations: { comments: true },
     });
 
     if (!post) {
