@@ -43,6 +43,12 @@ class PostService {
       ...body,
     });
   }
+
+  public async delete(id: number): Promise<PostEntity> {
+    const post = await this.getById(id);
+
+    return this.postRepository.remove(post);
+  }
 }
 
 export { PostService };

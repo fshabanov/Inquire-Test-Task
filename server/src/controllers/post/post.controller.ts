@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -45,6 +46,11 @@ class PostController {
     @Body() { title, content }: PostUpdateRequestDto,
   ): Promise<PostEntity> {
     return this.postService.update(Number(id), { title, content });
+  }
+
+  @Delete('/:id')
+  delete(@Param('id') id: string): Promise<PostEntity> {
+    return this.postService.delete(Number(id));
   }
 }
 
