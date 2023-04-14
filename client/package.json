@@ -13,10 +13,11 @@
   "author": "Farid Shabanov",
   "license": "ISC",
   "dependencies": {
+    "blog-shared": "file:../shared/build",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",
-    "blog-shared": "file:../shared/build"
+    "react-router-dom": "6.10.0",
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
