@@ -9,3 +9,4 @@ export {
   type PostUpdateRequestDto,
   type PostWithCommentsResponseDto,
 } from './post/post';
+export { type ValidationSchema } from './validation/validation';
