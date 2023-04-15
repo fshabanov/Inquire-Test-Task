@@ -19,17 +19,20 @@ const Post: FC = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { post, dataStatus } = useAppSelector((state) => state.post);
-  const { control, errors, handleSubmit } = useAppForm<CommentCreateFormDto>({
-    defaultValues: COMMENT_FORM_DEFAULT_VALUES,
-    validationSchema: commentCreateValidationSchema,
-  });
+  const { control, errors, handleSubmit, reset } =
+    useAppForm<CommentCreateFormDto>({
+      defaultValues: COMMENT_FORM_DEFAULT_VALUES,
+      validationSchema: commentCreateValidationSchema,
+    });
 
   useEffect(() => {
     dispatch(postActions.getById(Number(id)));
   }, [id]);
 
   const handleCreateComment = ({ text }: CommentCreateFormDto): void => {
-    dispatch(postActions.createComment({ postId: Number(id), text }));
+    dispatch(postActions.createComment({ postId: Number(id), text }))
+      .unwrap()
+      .then(() => reset());
   };
 
   const handleDelete = (): void => {

@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'components/components';
+import { BrowserRouter, Toast } from 'components/components';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -15,6 +15,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
+        <Toast />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

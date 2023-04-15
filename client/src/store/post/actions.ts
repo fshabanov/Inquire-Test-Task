@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { NotificationMessage } from 'common/enums/enums';
 import {
   AsyncThunkConfig,
   CommentCreateRequestDto,
@@ -24,9 +25,11 @@ const getById = createAsyncThunk<
 const deletePost = createAsyncThunk<PostResponseDto, number, AsyncThunkConfig>(
   ActionType.DELETE,
   async (id, { extra }) => {
-    const { postApi } = extra;
+    const { notification, postApi } = extra;
 
     const deletedPost = await postApi.delete(id);
+
+    notification.success(NotificationMessage.POST_DELETED);
 
     return deletedPost;
   },
@@ -37,9 +40,11 @@ const createComment = createAsyncThunk<
   CommentCreateRequestDto,
   AsyncThunkConfig
 >(ActionType.CREATE_COMMENT, async ({ text, postId }, { extra }) => {
-  const { commentApi } = extra;
+  const { commentApi, notification } = extra;
 
   const comment = await commentApi.create({ postId, text });
+
+  notification.success(NotificationMessage.COMMENT_ADDED);
 
   return comment;
 });

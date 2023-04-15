@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { NotificationMessage } from 'common/enums/enums';
 import {
   AsyncThunkConfig,
   PostResponseDto,
@@ -13,9 +14,11 @@ const update = createAsyncThunk<
   PostUpdateRequestDto,
   AsyncThunkConfig
 >(ActionType.UPDATE, async ({ id, content, title }, { extra }) => {
-  const { postApi } = extra;
+  const { notification, postApi } = extra;
 
   const post = await postApi.update({ id, content, title });
+
+  notification.success(NotificationMessage.POST_UPDATED);
 
   return post;
 });

@@ -5,7 +5,12 @@ import {
   ValidationSchema,
 } from 'common/types/types';
 import { getFormValidationResolver } from 'helpers/helpers';
-import { useForm, UseFormHandleSubmit, ValidationMode } from 'react-hook-form';
+import {
+  useForm,
+  UseFormHandleSubmit,
+  UseFormReset,
+  ValidationMode,
+} from 'react-hook-form';
 
 type UseAppFormArguments = {
   defaultValues: Record<string, unknown>;
@@ -17,6 +22,7 @@ type UseAppFormResult<T extends FormValues = FormValues> = {
   control: FormControl;
   errors: FormErrors;
   handleSubmit: UseFormHandleSubmit<T>;
+  reset: UseFormReset<T>;
 };
 
 const useAppForm = <T extends FormValues = FormValues>({
@@ -28,6 +34,7 @@ const useAppForm = <T extends FormValues = FormValues>({
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm<FormValues>({
     defaultValues,
     resolver: validationSchema
@@ -40,6 +47,7 @@ const useAppForm = <T extends FormValues = FormValues>({
     handleSubmit: handleSubmit as UseFormHandleSubmit<T>,
     control,
     errors,
+    reset: reset as UseFormReset<T>,
   };
 };
 
