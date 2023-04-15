@@ -1,4 +1,9 @@
 export {
+  type AppDispatch,
+  type AppState,
+  type AsyncThunkConfig,
+} from './app/app';
+export {
   type CommentCreateRequestDto,
   type CommentResponseDto,
 } from './comment/comment';

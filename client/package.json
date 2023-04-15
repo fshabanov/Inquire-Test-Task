@@ -14,9 +14,11 @@
   "author": "Farid Shabanov",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "1.9.3",
     "blog-shared": "file:../shared/build",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-redux": "8.0.5",
     "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1"
   },
