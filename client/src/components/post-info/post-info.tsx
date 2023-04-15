@@ -1,7 +1,7 @@
 import { AppRoute } from 'common/enums/enums';
 import { FC, PostResponseDto } from 'common/types/types';
 import { Link } from 'components/components';
-import { getFormattedDate } from 'helpers/helpers';
+import { getFormattedDate, sanitizeHtml } from 'helpers/helpers';
 
 import styles from './styles.module.scss';
 
@@ -16,9 +16,7 @@ const PostInfo: FC<Props> = ({ post }) => {
         <div>
           <h2>{post.title}</h2>
         </div>
-        <div>
-          <p>{post.content}</p>
-        </div>
+        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }} />
       </div>
       <div className={styles.btnWrapper}>
         <div>

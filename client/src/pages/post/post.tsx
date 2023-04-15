@@ -1,6 +1,6 @@
-import { DataStatus } from 'common/enums/enums';
+import { AppRoute, DataStatus } from 'common/enums/enums';
 import { CommentCreateFormDto, FC } from 'common/types/types';
-import { Input } from 'components/components';
+import { Button, Input } from 'components/components';
 import { getFormattedDate, getNameOf, sanitizeHtml } from 'helpers/helpers';
 import {
   useAppDispatch,
@@ -52,7 +52,13 @@ const Post: FC = () => {
       <div className={styles.postWrapper}>
         <div className={styles.titleWrapper}>
           <h1>{post.title}</h1>
-          <button onClick={handleDelete}>Delete</button>
+          <div className={styles.buttonsWrapper}>
+            <Button
+              to={`${AppRoute.POSTS}/${id}${AppRoute.EDIT}` as AppRoute}
+              label="Update"
+            />
+            <Button onClick={handleDelete} label="Delete" />
+          </div>
         </div>
         <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}></p>
       </div>
@@ -72,7 +78,9 @@ const Post: FC = () => {
             name={getNameOf<CommentCreateFormDto>('text')}
             placeholder="Comment"
           />
-          <button type="submit">Send</button>
+          <div className={styles.btnWrapper}>
+            <Button label="Send" type="submit" />
+          </div>
         </form>
       </div>
     </div>

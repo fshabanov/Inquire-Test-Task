@@ -1,11 +1,12 @@
 import { FC, PostCreateRequestDto } from 'common/types/types';
-import { Input, TextEditor } from 'components/components';
+import { Button, Input, TextEditor } from 'components/components';
 import { getNameOf } from 'helpers/helpers';
 import { useAppDispatch, useAppForm } from 'hooks/hooks';
 import { postCreateActions } from 'store/actions';
 import { postCreate as postCreateValidationSchema } from 'validation-schemas/validation-schemas';
 
 import { POST_CREATE_DEFAULT_VALUES } from './common';
+import styles from './styles.module.scss';
 
 const PostsNew: FC = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +32,9 @@ const PostsNew: FC = () => {
         errors={errors}
         name={getNameOf<PostCreateRequestDto>('content')}
       />
-      <button type="submit">Submit</button>
+      <div className={styles.btnWrapper}>
+        <Button type="submit" label="Submit" />
+      </div>
     </form>
   );
 };

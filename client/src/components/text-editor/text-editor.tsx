@@ -9,6 +9,8 @@ import {
 import { ErrorMessage } from 'components/components';
 import { useFormController } from 'hooks/hooks';
 
+import styles from './styles.module.scss';
+
 type Props = {
   initialValue?: string;
   control: FormControl;
@@ -38,7 +40,10 @@ const TextEditor: FC<Props> = ({
         }}
         onEditorChange={field.onChange}
       />
-      <ErrorMessage errors={errors} name={name} />
+
+      <span className={styles.error}>
+        <ErrorMessage errors={errors} name={name} />
+      </span>
     </>
   );
 };

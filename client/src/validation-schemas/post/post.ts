@@ -1,1 +1,4 @@
-export { postCreate } from 'blog-shared/validation-schemas/validation-schemas';
+export {
+  postCreate,
+  postUpdate,
+} from 'blog-shared/validation-schemas/validation-schemas';
