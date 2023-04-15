@@ -1,13 +1,13 @@
-import { reducer as homeReducer } from './home/reducer';
-import { reducer as postReducer } from './post/reducer';
-import { reducer as postCreateReducer } from './post-create/reducer';
-import { reducer as postUpdateReducer } from './post-update/reducer';
+import { reducer as home } from './home/reducer';
+import { reducer as post } from './post/reducer';
+import { reducer as postCreate } from './post-create/reducer';
+import { reducer as postUpdate } from './post-update/reducer';
 
 const rootReducer = {
-  homeReducer,
-  postReducer,
-  postCreateReducer,
-  postUpdateReducer,
+  home,
+  post,
+  postCreate,
+  postUpdate,
 };
 
 export { rootReducer };

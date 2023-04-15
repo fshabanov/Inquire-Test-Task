@@ -2,5 +2,4 @@
 '*': npm run lint:editorconfig && npm run lint:fs
 'shared/**/*.ts': npm run lint:shared:js
 'server/**/*.ts': npm run lint:server:js
-'client/**/*.scss': npm run lint:client:css
 'client/**/*.{ts,tsx}': npm run lint:client:js

@@ -1,0 +1,15 @@
+.container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px auto;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+}
+
+.infoWrapper {
+  flex: 1;
+  margin-right: 30px;
+}

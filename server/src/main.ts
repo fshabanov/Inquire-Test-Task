@@ -11,6 +11,7 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+  app.setGlobalPrefix(ENV.API.PREFIX);
   await app.listen(ENV.APP.PORT);
 }
 bootstrap();
