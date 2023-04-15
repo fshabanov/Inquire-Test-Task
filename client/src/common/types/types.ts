@@ -4,6 +4,7 @@ export {
   type AsyncThunkConfig,
 } from './app/app';
 export {
+  type CommentCreateFormDto,
   type CommentCreateRequestDto,
   type CommentResponseDto,
 } from './comment/comment';

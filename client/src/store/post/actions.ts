@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   AsyncThunkConfig,
+  CommentCreateRequestDto,
+  CommentResponseDto,
   PostResponseDto,
   PostWithCommentsResponseDto,
 } from 'common/types/types';
@@ -30,4 +32,16 @@ const deletePost = createAsyncThunk<PostResponseDto, number, AsyncThunkConfig>(
   },
 );
 
-export { deletePost, getById };
+const createComment = createAsyncThunk<
+  CommentResponseDto,
+  CommentCreateRequestDto,
+  AsyncThunkConfig
+>(ActionType.CREATE_COMMENT, async ({ text, postId }, { extra }) => {
+  const { commentApi } = extra;
+
+  const comment = await commentApi.create({ postId, text });
+
+  return comment;
+});
+
+export { createComment, deletePost, getById };

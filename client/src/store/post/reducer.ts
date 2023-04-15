@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { DataStatus } from 'common/enums/enums';
 import { PostWithCommentsResponseDto } from 'common/types/types';
 
-import { deletePost, getById } from './actions';
+import { createComment, deletePost, getById } from './actions';
 
 type State = {
   dataStatus: DataStatus;
@@ -34,6 +34,23 @@ const reducer = createReducer(initialState, (builder) => {
     state.post = null;
   });
   builder.addCase(deletePost.rejected, (state) => {
+    state.dataStatus = DataStatus.REJECTED;
+  });
+
+  builder.addCase(createComment.pending, (state) => {
+    state.dataStatus = DataStatus.PENDING;
+  });
+  builder.addCase(createComment.fulfilled, (state, { payload }) => {
+    state.dataStatus = DataStatus.FULFILLED;
+    state.post = {
+      ...(state.post as PostWithCommentsResponseDto),
+      comments: [
+        ...(state.post as PostWithCommentsResponseDto).comments,
+        payload,
+      ],
+    };
+  });
+  builder.addCase(createComment.rejected, (state) => {
     state.dataStatus = DataStatus.REJECTED;
   });
 });
