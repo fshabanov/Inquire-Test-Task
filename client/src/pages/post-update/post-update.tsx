@@ -43,21 +43,25 @@ const PostUpdate: FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <h1>Update Post</h1>
       <form onSubmit={handleSubmit(handleUpdatePost)}>
-        <Input
-          control={control}
-          errors={errors}
-          label="Title"
-          name={getNameOf<PostUpdateRequestDto>('title')}
-        />
-        <TextEditor
-          control={control}
-          errors={errors}
-          name={getNameOf<PostUpdateRequestDto>('content')}
-          initialValue={post.content}
-        />
+        <div className={styles.inputWrapper}>
+          <Input
+            control={control}
+            errors={errors}
+            label="Title"
+            name={getNameOf<PostUpdateRequestDto>('title')}
+          />
+        </div>
+        <div className={styles.inputWrapper}>
+          <TextEditor
+            control={control}
+            errors={errors}
+            name={getNameOf<PostUpdateRequestDto>('content')}
+            initialValue={post.content}
+          />
+        </div>
         <div className={styles.btnWrapper}>
           <Button type="submit" label="Update" />
         </div>

@@ -1,5 +1,6 @@
 export { Button } from './button/button';
 export { Input } from './input/input';
+export { Navbar } from './navbar/navbar';
 export { PostInfo } from './post-info/post-info';
 export { TextEditor } from './text-editor/text-editor';
 export { Toast } from './toast/toast';

@@ -20,22 +20,29 @@ const PostsNew: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleCreatePost)}>
-      <Input
-        control={control}
-        errors={errors}
-        label="Title"
-        name={getNameOf<PostCreateRequestDto>('title')}
-      />
-      <TextEditor
-        control={control}
-        errors={errors}
-        name={getNameOf<PostCreateRequestDto>('content')}
-      />
-      <div className={styles.btnWrapper}>
-        <Button type="submit" label="Submit" />
-      </div>
-    </form>
+    <div className={styles.formWrapper}>
+      <h1>Add a new post</h1>
+      <form onSubmit={handleSubmit(handleCreatePost)}>
+        <div className={styles.inputWrapper}>
+          <Input
+            control={control}
+            errors={errors}
+            label="Title"
+            name={getNameOf<PostCreateRequestDto>('title')}
+          />
+        </div>
+        <div className={styles.inputWrapper}>
+          <TextEditor
+            control={control}
+            errors={errors}
+            name={getNameOf<PostCreateRequestDto>('content')}
+          />
+        </div>
+        <div className={styles.btnWrapper}>
+          <Button type="submit" label="Submit" />
+        </div>
+      </form>
+    </div>
   );
 };
 
