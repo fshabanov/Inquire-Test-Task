@@ -1,5 +1,6 @@
+import { DataStatus } from 'common/enums/enums';
 import { FC, PostUpdateRequestDto } from 'common/types/types';
-import { Button, Input, TextEditor } from 'components/components';
+import { Button, Input, Spinner, TextEditor } from 'components/components';
 import { getNameOf } from 'helpers/helpers';
 import {
   useAppDispatch,
@@ -15,7 +16,7 @@ import { POST_UPDATE_DEFAULT_VALUES } from './common';
 import styles from './styles.module.scss';
 
 const PostUpdate: FC = () => {
-  const { post } = useAppSelector((state) => state.postUpdate);
+  const { post, dataStatus } = useAppSelector((state) => state.postUpdate);
   const dispatch = useAppDispatch();
   const { control, errors, handleSubmit, reset } =
     useAppForm<PostUpdateRequestDto>({
@@ -37,6 +38,10 @@ const PostUpdate: FC = () => {
       reset({ title: post.title, content: post.content });
     }
   }, [post]);
+
+  if (dataStatus === DataStatus.PENDING) {
+    return <Spinner />;
+  }
 
   if (!post) {
     return <p>Post was not found</p>;

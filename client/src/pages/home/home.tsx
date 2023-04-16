@@ -1,10 +1,11 @@
+import { DataStatus } from 'common/enums/enums';
 import { FC } from 'common/types/types';
-import { PostInfo } from 'components/components';
+import { PostInfo, Spinner } from 'components/components';
 import { useAppDispatch, useAppSelector, useEffect } from 'hooks/hooks';
 import { homeActions } from 'store/actions';
 
 const Home: FC = () => {
-  const { posts } = useAppSelector((state) => state.home);
+  const { posts, dataStatus } = useAppSelector((state) => state.home);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -14,6 +15,10 @@ const Home: FC = () => {
   const handleDelete = (id: number): void => {
     dispatch(homeActions.deletePost(id));
   };
+
+  if (dataStatus === DataStatus.PENDING) {
+    return <Spinner />;
+  }
 
   return (
     <div>

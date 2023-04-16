@@ -1,6 +1,6 @@
 import { AppRoute, DataStatus } from 'common/enums/enums';
 import { CommentCreateFormDto, FC } from 'common/types/types';
-import { Button, Input } from 'components/components';
+import { Button, Input, Spinner } from 'components/components';
 import { getFormattedDate, getNameOf, sanitizeHtml } from 'helpers/helpers';
 import {
   useAppDispatch,
@@ -40,7 +40,7 @@ const Post: FC = () => {
   };
 
   if (dataStatus === DataStatus.PENDING) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   if (!post) {
