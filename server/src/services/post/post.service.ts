@@ -38,7 +38,16 @@ class PostService {
     return post;
   }
 
-  public update(id: number, body: PostUpdateRequestDto): Promise<PostEntity> {
+  public async update(
+    id: number,
+    body: PostUpdateRequestDto,
+  ): Promise<PostEntity> {
+    const post = await this.postRepository.findOne({ where: { id } });
+
+    if (!post) {
+      throw new NotFoundException(PostErrorMessage.POST_NOT_FOUND);
+    }
+
     return this.postRepository.save({
       id,
       ...body,
@@ -47,6 +56,10 @@ class PostService {
 
   public async delete(id: number): Promise<PostEntity> {
     const post = await this.getById(id);
+
+    if (!post) {
+      throw new NotFoundException(PostErrorMessage.POST_NOT_FOUND);
+    }
 
     return this.postRepository.remove(post);
   }

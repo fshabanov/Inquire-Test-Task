@@ -6,21 +6,21 @@ import {
 
 abstract class BaseEntity {
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  public id: number;
 
   @CreateDateColumn({
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP(6)',
     name: 'created_at',
   })
-  createdAt: Date;
+  public createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP(6)',
     name: 'updated_at',
   })
-  updatedAt: Date;
+  public updatedAt: Date;
 }
 
 export { BaseEntity };

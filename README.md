@@ -26,9 +26,10 @@ This is the repository of the Blogs Application, a test task of Inquire Job Appl
 
 1. **`npm run install:all`** at the root.
 2. Fill **`.env`** files as written above.
-3. **`cd client && npm run start`** then **`cd server && npm run start:dev`**
+3. Migrate database by running **`cd server && npm run build && npm run typeorm:migrate`**
+4. **`cd client && npm run start`** then **`cd server && npm run start:dev`**
 
-### 🗜 Tools
+## 🗜 Tools
 
 ### 🌑 Backend
 
@@ -42,7 +43,7 @@ This is the repository of the Blogs Application, a test task of Inquire Job Appl
 - [Redux](https://redux.js.org/) + [Redux Toolkit](https://redux-toolkit.js.org/) – a state manager.
 - [React Router](https://reactrouter.com/en/main) - route handler
 
-#### 🥊 Code quality
+### 🥊 Code quality
 
 - [simple-git-hooks](https://www.npmjs.com/package/simple-git-hooks) — a tool that lets you easily manage git hooks.
 - [lint-staged](https://www.npmjs.com/package/lint-staged) — run linters on git staged files.

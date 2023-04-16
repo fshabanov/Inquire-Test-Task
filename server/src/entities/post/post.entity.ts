@@ -1,21 +1,20 @@
-import { DbTableName } from 'src/common/enums/enums';
 import { Column, Entity, OneToMany } from 'src/common/decorators/decorators';
+import { DbTableName } from 'src/common/enums/enums';
 
-import { BaseEntity } from '../entities';
-import { CommentEntity } from '../comment/comment.entity';
+import { BaseEntity, CommentEntity } from '../entities';
 
 @Entity({ name: DbTableName.POSTS })
 class PostEntity extends BaseEntity {
   @Column()
-  title: string;
+  public title: string;
 
   @Column()
-  content: string;
+  public content: string;
 
   @OneToMany(() => CommentEntity, (comment) => comment.post, {
     cascade: true,
   })
-  comments: CommentEntity[];
+  public comments: CommentEntity[];
 }
 
 export { PostEntity };

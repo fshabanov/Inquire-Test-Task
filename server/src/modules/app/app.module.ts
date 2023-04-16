@@ -1,13 +1,12 @@
 import { Module } from 'src/common/decorators/decorators';
 import { ENV } from 'src/common/enums/enums';
 import { AppController } from 'src/controllers/app/app.controller';
-import { PostEntity } from 'src/entities/entities';
+import { CommentEntity, PostEntity } from 'src/entities/entities';
 import { TypeOrmModule } from 'src/modules/modules';
 import { AppService } from 'src/services/app/app.service';
 
-import { PostModule } from '../post/post.module';
-import { CommentEntity } from 'src/entities/comment/comment.entity';
 import { CommentModule } from '../comment/comment.module';
+import { PostModule } from '../post/post.module';
 
 const { TYPE, HOST, PORT, USER, PASSWORD, NAME } = ENV.DB;
 

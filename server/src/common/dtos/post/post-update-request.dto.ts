@@ -3,11 +3,11 @@ import { IsOptional, IsString } from 'src/common/decorators/decorators';
 class PostUpdateRequestDto {
   @IsOptional()
   @IsString()
-  title?: string;
+  public title?: string;
 
   @IsOptional()
   @IsString()
-  content?: string;
+  public content?: string;
 }
 
 export { PostUpdateRequestDto };

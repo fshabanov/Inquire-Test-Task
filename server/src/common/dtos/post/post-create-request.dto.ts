@@ -2,10 +2,10 @@ import { IsString } from 'src/common/decorators/decorators';
 
 class PostCreateRequestDto {
   @IsString()
-  title: string;
+  public title: string;
 
   @IsString()
-  content: string;
+  public content: string;
 }
 
 export { PostCreateRequestDto };

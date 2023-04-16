@@ -2,7 +2,7 @@ import { IsString } from 'src/common/decorators/decorators';
 
 class CommentCreateRequestDto {
   @IsString()
-  text: string;
+  public text: string;
 }
 
 export { CommentCreateRequestDto };

@@ -1,8 +1,9 @@
-import { InjectRepository, Injectable } from 'src/common/decorators/decorators';
-import { CommentEntity } from 'src/entities/comment/comment.entity';
-import { Repository } from 'src/common/types/types';
-import { PostService } from '../post/post.service';
+import { Injectable, InjectRepository } from 'src/common/decorators/decorators';
 import { CommentCreateRequestDto } from 'src/common/dtos/dtos';
+import { Repository } from 'src/common/types/types';
+import { CommentEntity } from 'src/entities/comment/comment.entity';
+
+import { PostService } from '../post/post.service';
 
 @Injectable()
 class CommentService {

@@ -7,13 +7,13 @@ import {
   Patch,
   Post,
 } from 'src/common/decorators/decorators';
-import { ApiPath } from 'src/common/enums/enums';
-import { sanitizeHtml } from 'src/helpers/helpers';
 import {
   PostCreateRequestDto,
   PostUpdateRequestDto,
 } from 'src/common/dtos/dtos';
+import { ApiPath } from 'src/common/enums/enums';
 import { PostEntity } from 'src/entities/entities';
+import { sanitizeHtml } from 'src/helpers/helpers';
 import { PostService } from 'src/services/post/post.service';
 
 @Controller(ApiPath.POSTS)
@@ -21,7 +21,7 @@ class PostController {
   public constructor(private postService: PostService) {}
 
   @Post()
-  create(
+  public create(
     @Body() { content, title }: PostCreateRequestDto,
   ): Promise<PostEntity> {
     return this.postService.create({
@@ -31,17 +31,17 @@ class PostController {
   }
 
   @Get()
-  getAll(): Promise<PostEntity[]> {
+  public getAll(): Promise<PostEntity[]> {
     return this.postService.getAll();
   }
 
   @Get('/:id')
-  getById(@Param('id') id: string): Promise<PostEntity> {
+  public getById(@Param('id') id: string): Promise<PostEntity> {
     return this.postService.getById(Number(id));
   }
 
   @Patch('/:id')
-  updatePost(
+  public updatePost(
     @Param('id') id: string,
     @Body() { title, content }: PostUpdateRequestDto,
   ): Promise<PostEntity> {
@@ -49,7 +49,7 @@ class PostController {
   }
 
   @Delete('/:id')
-  delete(@Param('id') id: string): Promise<PostEntity> {
+  public delete(@Param('id') id: string): Promise<PostEntity> {
     return this.postService.delete(Number(id));
   }
 }
