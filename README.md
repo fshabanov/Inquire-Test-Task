@@ -8,11 +8,11 @@ This is the repository of the Blogs Application, a test task of Inquire Job Appl
 
 - [Server](./server) - The application backend.
 
-  _To start the server correctly, create **`.env`** file, copy **`.env.example`** to that file and change values, which are in square brackets._
+  _To start the server correctly, create **`.env`** file, fill it with example from **`.env.example`** and change values, which are in square brackets._
 
 - [Client](./client) - The application frontend
 
-  _To start the client correctly, create **`.env`** file, copy **`.env.example`** to that file and change values, which are in square brackets._
+  _To start the client correctly, create **`.env`** file, fill it with example from **`.env.example`** and change values, which are in square brackets._
 
 - [Shared](./shared) - The application common modules for reusability.
 
