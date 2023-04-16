@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { NotificationMessage } from 'common/enums/enums';
+import { AppRoute, NotificationMessage } from 'common/enums/enums';
 import {
   AsyncThunkConfig,
   CommentCreateRequestDto,
@@ -25,11 +25,13 @@ const getById = createAsyncThunk<
 const deletePost = createAsyncThunk<PostResponseDto, number, AsyncThunkConfig>(
   ActionType.DELETE,
   async (id, { extra }) => {
-    const { notification, postApi } = extra;
+    const { navigation, notification, postApi } = extra;
 
     const deletedPost = await postApi.delete(id);
 
     notification.success(NotificationMessage.POST_DELETED);
+
+    navigation.push(AppRoute.HOME);
 
     return deletedPost;
   },

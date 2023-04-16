@@ -11,10 +11,14 @@ const Home: FC = () => {
     dispatch(homeActions.getAll());
   }, []);
 
+  const handleDelete = (id: number): void => {
+    dispatch(homeActions.deletePost(id));
+  };
+
   return (
     <div>
       {posts.map((post) => (
-        <PostInfo key={post.id} post={post} />
+        <PostInfo key={post.id} post={post} onDelete={handleDelete} />
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { DataStatus } from 'common/enums/enums';
 import { PostResponseDto } from 'common/types/types';
 
-import { getAll } from './actions';
+import { deletePost, getAll } from './actions';
 
 type State = {
   dataStatus: DataStatus;
@@ -23,6 +23,17 @@ const reducer = createReducer(initialState, (builder) => {
     state.posts = payload;
   });
   builder.addCase(getAll.rejected, (state) => {
+    state.dataStatus = DataStatus.REJECTED;
+  });
+
+  builder.addCase(deletePost.pending, (state) => {
+    state.dataStatus = DataStatus.PENDING;
+  });
+  builder.addCase(deletePost.fulfilled, (state, { payload }) => {
+    state.dataStatus = DataStatus.FULFILLED;
+    state.posts = state.posts.filter((post) => post.id !== payload);
+  });
+  builder.addCase(deletePost.rejected, (state) => {
     state.dataStatus = DataStatus.REJECTED;
   });
 });

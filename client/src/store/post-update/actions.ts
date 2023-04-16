@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { NotificationMessage } from 'common/enums/enums';
+import { AppRoute, NotificationMessage } from 'common/enums/enums';
 import {
   AsyncThunkConfig,
   PostResponseDto,
@@ -14,11 +14,13 @@ const update = createAsyncThunk<
   PostUpdateRequestDto,
   AsyncThunkConfig
 >(ActionType.UPDATE, async ({ id, content, title }, { extra }) => {
-  const { notification, postApi } = extra;
+  const { navigation, notification, postApi } = extra;
 
   const post = await postApi.update({ id, content, title });
 
   notification.success(NotificationMessage.POST_UPDATED);
+
+  navigation.push(`${AppRoute.POSTS}/${post.id}` as AppRoute);
 
   return post;
 });
