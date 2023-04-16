@@ -6,6 +6,7 @@ import {
   postApi,
 } from 'services/services';
 
+import { handleError } from './middlewares/middlewares';
 import { rootReducer } from './root-reducer';
 
 const extraArgument = {
@@ -20,7 +21,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       thunk: { extraArgument },
-    });
+    }).concat([handleError]);
   },
 });
 

@@ -15,11 +15,13 @@ export {
   type FormValues,
 } from './form/form';
 export { type HttpOptions } from './http/http';
+export { type NotificationPayload } from './notification/notification';
 export {
   type PostCreateRequestDto,
   type PostResponseDto,
   type PostUpdateRequestDto,
   type PostWithCommentsResponseDto,
 } from './post/post';
+export { type MiddlewareArguments } from './store/store';
 export { type ValidationSchema } from './validation/validation';
 export { FC } from 'react';
